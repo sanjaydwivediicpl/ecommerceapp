@@ -47,8 +47,15 @@ namespace DapperProject.Controllers
 
         public ActionResult Myorder()
         {
-            
-            return View((List<Products>)Session["cart"]);
+            if (Session["cart"] != null)
+            {
+               return View((List<Products>)Session["cart"]);
+            }
+            else
+            {
+                return View();
+            }
+           
 
         }
 

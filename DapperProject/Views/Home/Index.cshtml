@@ -6,221 +6,122 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<div class="col-md-2" style="margin-top: 100px; margin-right: 20px;">
-    <div class="row" style="border:1px solid green">
-        <ul><li><a href="/Home/Index?CategoryId=1">Jakets</a></li></ul>
-        <table>
-            <tr><td></td></tr>
-            <tr><td><a href="/Home/Index?CategoryId=2">Spares</a></td></tr>
-            <tr><td><a href="/Home/Index?CategoryId=3">Tyres</a></td></tr>
-            <tr><td><a href="/Home/Index?CategoryId=4">Helmets</a></td></tr>
-        </table>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+        <div class="item active">
+            <img src="images/slider/la.jpg" alt="Los Angeles" style="width:100%;height:350px">
+            <div class="carousel-caption">
+                <h3>Los Angeles</h3>
+                <p>LA is always so much fun!</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="images/slider/chicago.jpg" alt="Chicago" style="width:100%;height:350px">
+            <div class="carousel-caption">
+                <h3>Chicago</h3>
+                <p>Thank you, Chicago!</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="images/slider/ny.jpg" alt="New York" style="width:100%;height:350px">
+            <div class="carousel-caption">
+                <h3>New York</h3>
+                <p>We love the Big Apple!</p>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
-<div class="col-md-6" style="margin-top: 50px; margin-left: 20px;">
+@if (Model.Where(x => x.CategoryId == 1).ToList().Count() > 0)
+{<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;">
     <div class="row">
-        @foreach (var m in Model)
-            {
-            <div class="col-md-5" style="margin-left: 30px;">
-                <a href="@Url.Action("EachProductDetails", "Home",m)">
+        <h4 style="margin-left:50px">Jackets</h4>
+        <hr />
+        @foreach (var m in Model.Where(x => x.CategoryId == 1).ToList())
+        {
+            <div class="col-md-2" style="margin-left: 40px;">
+                <a href="@Url.Action("EachProductDetails", "Home", m)">
                     <img class="a.photo" src="~/Images/@m.Url" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
                 </a>
                 <div class="row">
                     <h5><span id="mobilename" style="color:darkred">@m.ProductName</span></h5>
-
                 </div>
-
             </div>
         }
     </div>
-</div>
-
-
-<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;;">
-    <h5>Jackets</h5>
-    <hr />
+</div>}
+@if (Model.Where(x => x.CategoryId == 2).ToList().Count() > 0)
+{<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;">
     <div class="row">
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
+        <h4 style="margin-left:50px">Spares</h4>
+        <hr />
+        @foreach (var m in Model.Where(x => x.CategoryId == 2).ToList())
+        {
+            <div class="col-md-2" style="margin-left: 40px;">
+                <a href="@Url.Action("EachProductDetails", "Home", m)">
+                    <img class="a.photo" src="~/Images/@m.Url" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
+                </a>
+                <div class="row">
+                    <h5><span id="mobilename" style="color:darkred">@m.ProductName</span></h5>
+                </div>
             </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
+        }
     </div>
-</div>
-<div style="clear:both"></div>
-<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;;">
-    <h5>Jackets</h5>
-    <hr />
+</div>}
+@if (Model.Where(x => x.CategoryId == 3).ToList().Count() > 0)
+{<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;">
     <div class="row">
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
+        <h4 style="margin-left:50px">Tyres</h4>
+        <hr />
+        @foreach (var m in Model.Where(x => x.CategoryId == 3).ToList())
+        {
+            <div class="col-md-2" style="margin-left: 40px;">
+                <a href="@Url.Action("EachProductDetails", "Home", m)">
+                    <img class="a.photo" src="~/Images/@m.Url" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
+                </a>
+                <div class="row">
+                    <h5><span id="mobilename" style="color:darkred">@m.ProductName</span></h5>
+                </div>
             </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
+        }
     </div>
-</div>
-<div style="clear:both"></div>
-<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;;">
-    <h5>Jackets</h5>
-    <hr />
+</div>}
+@if (Model.Where(x => x.CategoryId == 4).ToList().Count() > 0)
+{<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;">
     <div class="row">
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
+        <h4 style="margin-left:50px">Helmets</h4>
+        <hr />
+        @foreach (var m in Model.Where(x => x.CategoryId == 4).ToList())
+        {
+            <div class="col-md-2" style="margin-left: 40px;">
+                <a href="@Url.Action("EachProductDetails", "Home", m)">
+                    <img class="a.photo" src="~/Images/@m.Url" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
+                </a>
+                <div class="row">
+                    <h5><span id="mobilename" style="color:darkred">@m.ProductName</span></h5>
+                </div>
             </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
+        }
     </div>
-</div>
-<div style="clear:both"></div>
-<div class="col-md-12" style="margin-top: 50px; margin-left: 10px; border:1px solid grey; border-radius: 25px;;">
-    <h5>Jackets</h5>
-    <hr />
-    <div class="row">
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-        <div class="col-md-2" style="margin-left: 40px;">
-            <a href="/Home/EachProductDetails?ProductId=7&amp;ProductName=Vega%20Crux%20CRX-B-M%20Flip-up%20Helmet%20%28Black%2C%20M%29&amp;Price=1306&amp;Url=Microsoft%20Lumia%20640%20XL%20LTE%20Dual%20SIM.jpg">
-                <img class="a.photo" src="/Images/Microsoft Lumia 640 XL LTE Dual SIM.jpg" style="overflow: hidden; position: relative; width:150px; height:150px; cursor:pointer" />
-            </a>
-            <div class="row">
-                <p><span id="mobilename" style="color:darkred">Vega Crux CRX-B-M Flip-up Helmet (Black, M)</span></p>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-<div style="clear:both"></div>
+</div>}

@@ -84,6 +84,7 @@
                         // Login In.    
                         this.SignInUser(logindetails.UserName, false);
                         Session.Add("UserIdentity", logindetails.UserName);
+                        Session.Add("UserId", logindetails.Id);
                         // Info.    
                         return this.RedirectToLocal(returnUrl);
                     }

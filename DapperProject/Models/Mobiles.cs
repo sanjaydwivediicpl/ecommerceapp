@@ -13,6 +13,6 @@ namespace DapperProject.Models
         public string Url { get; set; }
         public string ZoomUrl { get; set; }
         public string Description { get; set; }
-     
+        public int CategoryId { get; set; }
     }
 }

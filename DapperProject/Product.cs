@@ -17,7 +17,6 @@ namespace DapperProject
 
         public int ProductId { get; set; }
 
-        [StringLength(100)]
         public string ProductName { get; set; }
 
         [Column(TypeName = "money")]

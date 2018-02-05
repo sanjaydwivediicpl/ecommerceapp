@@ -25,7 +25,13 @@ namespace DapperProject.Controllers
             }
             else
             {
-                mycmd = "select * from Product";
+                mycmd = "select Top 4 * from Product Where CategoryId=1 "
+                + " union all "
+                + " select Top 4 * from Product Where CategoryId = 2 "
+                + " union all "
+                + "  select Top 4 * from Product Where CategoryId = 3 "
+                + " union all "
+                + " select Top 4 * from Product Where CategoryId = 4";
             }
              
             dt = new DataTable();
@@ -37,12 +43,15 @@ namespace DapperProject.Controllers
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Products mob = new Products();
-                mob.ProductId = Convert.ToInt32(dt.Rows[i]["ProductId"]);
-                mob.ProductName = dt.Rows[i]["ProductName"].ToString();
-                mob.Price = Convert.ToDouble(dt.Rows[i]["Price"]);
-                mob.Url = dt.Rows[i]["Url"].ToString();
-                mob.ZoomUrl= dt.Rows[i]["ZoomUrl"].ToString();
+                Products mob = new Products
+                {
+                    ProductId = Convert.ToInt32(dt.Rows[i]["ProductId"]),
+                    ProductName = Convert.ToString(dt.Rows[i]["ProductName"]),
+                    Price = Convert.ToDouble(dt.Rows[i]["Price"]),
+                    Url = Convert.ToString(dt.Rows[i]["Url"]),
+                    ZoomUrl = Convert.ToString(dt.Rows[i]["ZoomUrl"]),
+                    CategoryId = Convert.ToInt32(dt.Rows[i]["CategoryId"])
+                };
                 list.Add(mob);
             }
             return View(list);
